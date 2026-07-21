@@ -553,7 +553,7 @@
 <script>
 /* ============ DATA ============ */
 const categorias = [
-  {n:'Chaquetas Rompeviento', g:'industrial', img:'./img/rompevientos.jpg', d:'Ligeras y resistentes al viento para exteriores.'},
+  {n:'Chaquetas Rompeviento', g:'industrial', icon:'fa-wind', d:'Ligeras y resistentes al viento para exteriores.'},
   {n:'Delantales Industriales', g:'industrial', icon:'fa-user-shield', d:'Protección frontal para labores de taller y planta.'},
   {n:'Pantalones de Jean', g:'industrial', icon:'fa-ruler-vertical', d:'Resistencia y comodidad para el trabajo diario.'},
   {n:'Camisas Empresariales', g:'corporativo', icon:'fa-shirt', d:'Presentación formal para atención al cliente.'},
@@ -604,9 +604,9 @@ function renderCategorias(list){
       <div class="tag p-5 card-hover reveal in">
         <div class="tag-string"></div>
         <p class="ref-code text-[10px] text-navy-700/70 font-700">REF-${codeNum}</p>
-       <div class="h-24 rounded-lg bg-navy-950 flex items-center justify-center mt-2 fabric overflow-hidden">
-           <img src="${c.img || c.imagen}" alt="${c.n}" class="w-full h-full object-cover rounded-lg">
-             </div>
+        <div class="h-24 rounded-lg bg-navy-950 flex items-center justify-center mt-2 fabric">
+          <i class="fa-solid ${c.icon} text-3xl text-amber-500"></i>
+        </div>
         <h3 class="font-display font-700 text-sm text-navy-950 mt-4">${c.n}</h3>
         <p class="text-ink/55 text-xs mt-1.5 font-body leading-relaxed">${c.d}</p>
         <button class="text-xs font-display font-700 text-navy-950 mt-4 inline-flex items-center gap-1.5 hover:text-amber-600 verbtn">
@@ -655,7 +655,7 @@ productos.forEach(p=>{
   productGrid.insertAdjacentHTML('beforeend', `
     <div class="bg-white rounded-2xl border border-[#E2E6EC] overflow-hidden card-hover reveal in">
       <div class="h-44 ${p.bg} fabric flex items-center justify-center">
-       <img src="${do.img || do.imagen}" alt="${do.norte}" class="w-full h-full object-cover rounded-lg">
+        <i class="fa-solid ${p.icon} text-5xl ${p.bg.includes('text-navy-950') ? '' : 'text-amber-500'}"></i>
       </div>
       <div class="p-6">
         <h3 class="font-display font-700 text-navy-950">${p.n}</h3>
