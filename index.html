@@ -655,7 +655,7 @@ productos.forEach(p=>{
   productGrid.insertAdjacentHTML('beforeend', `
     <div class="bg-white rounded-2xl border border-[#E2E6EC] overflow-hidden card-hover reveal in">
       <div class="h-44 ${p.bg} fabric flex items-center justify-center">
-        <i class="fa-solid ${p.icon} text-5xl ${p.bg.includes('text-navy-950') ? '' : 'text-amber-500'}"></i>
+       <img src="${do.img || do.imagen}" alt="${do.norte}" class="w-full h-full object-cover rounded-lg">
       </div>
       <div class="p-6">
         <h3 class="font-display font-700 text-navy-950">${p.n}</h3>
