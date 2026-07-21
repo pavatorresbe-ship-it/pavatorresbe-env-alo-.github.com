@@ -604,9 +604,9 @@ function renderCategorias(list){
       <div class="tag p-5 card-hover reveal in">
         <div class="tag-string"></div>
         <p class="ref-code text-[10px] text-navy-700/70 font-700">REF-${codeNum}</p>
-        <div class="h-24 rounded-lg bg-navy-950 flex items-center justify-center mt-2 fabric">
-          <img src="${c.img || c.imagen}" alt="${c.n}" class="w-full h-full object-cover rounded-lg">
-        </div>
+       <div class="h-24 rounded-lg bg-navy-950 flex items-center justify-center mt-2 fabric overflow-hidden">
+           <img src="${c.img || c.imagen}" alt="${c.n}" class="w-full h-full object-cover rounded-lg">
+             </div>
         <h3 class="font-display font-700 text-sm text-navy-950 mt-4">${c.n}</h3>
         <p class="text-ink/55 text-xs mt-1.5 font-body leading-relaxed">${c.d}</p>
         <button class="text-xs font-display font-700 text-navy-950 mt-4 inline-flex items-center gap-1.5 hover:text-amber-600 verbtn">
