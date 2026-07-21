@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dotaciones OB | Uniformes y Dotaciones Empresariales</title>
+<meta name="description" content="Dotaciones OB fabrica y distribuye uniformes y dotaciones empresariales para todos los sectores: industrial, corporativo, salud, cocina y construcción. Personalización con bordado y estampado, envíos a todo Colombia.">
+<meta name="keywords" content="dotaciones empresariales, uniformes industriales, uniformes corporativos, EPP, bordado, estampado, uniformes hospitalarios, uniformes de cocina">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230A1F3D%22/><text x=%2250%22 y=%2265%22 font-size=%2255%22 fill=%22%23F5A623%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22>OB</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950:'#0A1F3D', 900:'#0D2A52', 800:'#13315C', 700:'#1B4380', 600:'#255296' },
+          amber: { 500:'#F5A623', 600:'#D98C0F', 100:'#FCEBCB' },
+          paper: '#F7F8FA',
+          ink: '#16212E'
+        },
+        fontFamily: {
+          display: ['Montserrat','sans-serif'],
+          body: ['Inter','sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root{ --stitch: #C9CFDA; }
+  *{ scroll-behavior:smooth; }
+  html{ scroll-padding-top: 88px; }
+  body{ font-family:'Inter',sans-serif; color:#16212E; background:#fff; }
+  h1,h2,h3,h4,.font-display{ font-family:'Montserrat',sans-serif; }
+
+  /* Stitch divider - evokes sewing thread */
+  .stitch{ border-top: 2px dashed var(--stitch); }
+  .stitch-b{ border-bottom: 2px dashed var(--stitch); }
+
+  /* Hang-tag signature element */
+  .tag{
+    position: relative;
+    background:#fff;
+    border:1.5px dashed #D8DEE8;
+    border-radius: 10px;
+  }
+  .tag::before{
+    content:'';
+    position:absolute;
+    top:14px; left:-9px;
+    width:16px; height:16px;
+    background:#0A1F3D;
+    border-radius:50%;
+    border:3px solid #fff;
+    box-shadow: 0 0 0 1.5px #D8DEE8;
+  }
+  .tag-string{
+    position:absolute; top:20px; left:-2px; width:2px; height:26px;
+    background: repeating-linear-gradient(180deg,#B9C2D0 0 4px, transparent 4px 7px);
+  }
+
+  .ref-code{ font-family:'Montserrat',sans-serif; letter-spacing:.06em; }
+
+  .clip-hem{ clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+
+  .card-hover{ transition: transform .35s ease, box-shadow .35s ease; }
+  .card-hover:hover{ transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(10,31,61,.18); }
+
+  .fabric{
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.10) 0 8px, transparent 8px 16px);
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#F1F3F7; }
+  ::-webkit-scrollbar-thumb{ background:#C4CCDA; border-radius:6px; }
+
+  .nav-link{ position:relative; }
+  .nav-link::after{
+    content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0%;
+    background:#F5A623; transition: width .25s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after{ width:100%; }
+
+  input:focus, textarea:focus, select:focus{ outline: none; box-shadow: 0 0 0 3px rgba(245,166,35,.35); border-color:#F5A623; }
+  button:focus-visible, a:focus-visible{ outline: 2px solid #F5A623; outline-offset:2px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none; opacity:1; transform:none; }
+    *{ scroll-behavior:auto; }
+  }
+
+  .swing:hover{ transform: rotate(0deg) translateY(-4px); }
+  .swing{ transition: transform .4s ease; }
+
+  .star{ color:#F5A623; }
+</style>
+</head>
+<body class="bg-white text-ink">
+
+<!-- ============ HEADER ============ -->
+<header id="header" class="fixed top-0 inset-x-0 z-50 bg-navy-950/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#inicio" class="flex items-center gap-3">
+        <span class="w-11 h-11 rounded-xl bg-amber-500 flex items-center justify-center font-display font-800 text-navy-950 text-lg">OB</span>
+        <span class="font-display font-700 text-white text-lg leading-tight">
+          DOTACIONES<span class="text-amber-500"> OB</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-white/85 font-body">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#catalogo" class="nav-link">Productos</a>
+        <a href="#categorias" class="nav-link">Categorías</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#testimonios" class="nav-link">Clientes</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#cotizacion" class="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-navy-950 font-display font-700 text-sm px-5 py-2.5 rounded-lg transition">
+          Solicitar Cotización
+        </a>
+        <button id="menuBtn" aria-label="Abrir menú" class="lg:hidden text-white text-2xl w-10 h-10 flex items-center justify-center">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden bg-navy-900 border-t border-white/10">
+    <nav class="flex flex-col px-5 py-4 gap-1 text-white/90 font-body">
+      <a href="#inicio" class="py-2.5 border-b border-white/10">Inicio</a>
+      <a href="#catalogo" class="py-2.5 border-b border-white/10">Productos</a>
+      <a href="#categorias" class="py-2.5 border-b border-white/10">Categorías</a>
+      <a href="#nosotros" class="py-2.5 border-b border-white/10">Nosotros</a>
+      <a href="#testimonios" class="py-2.5 border-b border-white/10">Clientes</a>
+      <a href="#contacto" class="py-2.5">Contacto</a>
+      <a href="#cotizacion" class="mt-3 text-center bg-amber-500 text-navy-950 font-display font-700 py-2.5 rounded-lg">Solicitar Cotización</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="inicio" class="relative bg-navy-950 clip-hem pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size:26px 26px;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <span class="inline-flex items-center gap-2 ref-code text-amber-500 text-xs font-700 tracking-widest uppercase bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5">
+        <i class="fa-solid fa-industry"></i> Fabricación nacional · REF-2026
+      </span>
+      <h1 class="font-display font-800 text-white text-4xl md:text-5xl xl:text-6xl leading-[1.08] mt-6">
+        Dotaciones empresariales<br class="hidden md:block"> de <span class="text-amber-500">alta calidad</span>
+      </h1>
+      <p class="text-white/70 text-lg mt-6 max-w-xl font-body">
+        Fabricamos y distribuimos uniformes y prendas de trabajo para empresas de todos los sectores, con personalización de marca y entrega a nivel nacional.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-9">
+        <a href="#catalogo" class="inline-flex items-center gap-2 bg-white text-navy-950 font-display font-700 px-7 py-3.5 rounded-lg hover:bg-white/90 transition">
+          <i class="fa-solid fa-book-open"></i> Ver Catálogo
+        </a>
+        <a href="#cotizacion" class="inline-flex items-center gap-2 bg-amber-500 text-navy-950 font-display font-700 px-7 py-3.5 rounded-lg hover:bg-amber-600 transition">
+          <i class="fa-solid fa-bolt"></i> Cotizar Ahora
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-x-8 gap-y-3 mt-10 text-white/70 text-sm font-body">
+        <span><i class="fa-solid fa-truck-fast text-amber-500 mr-2"></i>Envíos a todo el país</span>
+        <span><i class="fa-solid fa-pen-ruler text-amber-500 mr-2"></i>Bordado y estampado</span>
+        <span><i class="fa-solid fa-certificate text-amber-500 mr-2"></i>Calidad garantizada</span>
+      </div>
+    </div>
+
+    <!-- Hanging tag illustration cluster -->
+    <div class="relative h-[380px] md:h-[440px] reveal">
+      <div class="swing absolute left-[8%] top-2 rotate-[-6deg] w-52 md:w-60">
+        <div class="tag-string"></div>
+        <div class="tag p-5 shadow-xl">
+          <p class="ref-code text-[11px] text-navy-700 font-700">REF-01 · INDUSTRIAL</p>
+          <div class="mt-3 h-28 rounded-lg bg-navy-800 fabric flex items-center justify-center">
+            <i class="fa-solid fa-vest text-4xl text-amber-500"></i>
+          </div>
+          <p class="font-display font-700 text-sm mt-3 text-navy-950">Chalecos & Overoles</p>
+        </div>
+      </div>
+      <div class="swing absolute right-[4%] top-16 rotate-[5deg] w-52 md:w-60">
+        <div class="tag-string"></div>
+        <div class="tag p-5 shadow-xl">
+          <p class="ref-code text-[11px] text-navy-700 font-700">REF-02 · CORPORATIVO</p>
+          <div class="mt-3 h-28 rounded-lg bg-amber-500 fabric flex items-center justify-center">
+            <i class="fa-solid fa-shirt text-4xl text-navy-950"></i>
+          </div>
+          <p class="font-display font-700 text-sm mt-3 text-navy-950">Camisas & Polos</p>
+        </div>
+      </div>
+      <div class="swing absolute left-[20%] bottom-0 rotate-[4deg] w-52 md:w-60">
+        <div class="tag-string"></div>
+        <div class="tag p-5 shadow-xl">
+          <p class="ref-code text-[11px] text-navy-700 font-700">REF-03 · SALUD</p>
+          <div class="mt-3 h-28 rounded-lg bg-navy-700 fabric flex items-center justify-center">
+            <i class="fa-solid fa-house-medical text-4xl text-amber-500"></i>
+          </div>
+          <p class="font-display font-700 text-sm mt-3 text-navy-950">Batas & Hospitalarios</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORÍAS ============ -->
+<section id="categorias" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Nuestro muestrario</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Categorías de productos</h2>
+      <p class="text-ink/60 mt-4 font-body">20 líneas de dotación para cubrir cada área de tu empresa. Filtra por grupo o busca directamente.</p>
+    </div>
+
+    <!-- Buscador + filtros -->
+    <div class="mt-10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between reveal">
+      <div class="relative w-full md:max-w-sm">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-ink/40"></i>
+        <input id="catSearch" type="text" placeholder="Buscar categoría (ej. gorras, botas...)"
+          class="w-full pl-11 pr-4 py-3 rounded-lg border border-[#E2E6EC] bg-paper font-body text-sm">
+      </div>
+      <div id="catFilters" class="flex flex-wrap gap-2">
+        <button data-group="todos" class="filter-btn active-filter px-4 py-2 rounded-full text-xs font-700 font-display border border-navy-950 bg-navy-950 text-white">Todos</button>
+        <button data-group="corporativo" class="filter-btn px-4 py-2 rounded-full text-xs font-700 font-display border border-[#E2E6EC] text-navy-950 hover:border-navy-950">Corporativo</button>
+        <button data-group="industrial" class="filter-btn px-4 py-2 rounded-full text-xs font-700 font-display border border-[#E2E6EC] text-navy-950 hover:border-navy-950">Industrial</button>
+        <button data-group="proteccion" class="filter-btn px-4 py-2 rounded-full text-xs font-700 font-display border border-[#E2E6EC] text-navy-950 hover:border-navy-950">Protección (EPP)</button>
+        <button data-group="salud" class="filter-btn px-4 py-2 rounded-full text-xs font-700 font-display border border-[#E2E6EC] text-navy-950 hover:border-navy-950">Salud y servicios</button>
+      </div>
+    </div>
+
+    <div id="catGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"></div>
+    <p id="catEmpty" class="hidden text-center text-ink/50 mt-10 font-body">No encontramos categorías con ese término. Prueba con otra palabra.</p>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO DESTACADO ============ -->
+<section id="catalogo" class="py-24 bg-paper stitch">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Catálogo destacado</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Productos más solicitados</h2>
+      <p class="text-ink/60 mt-4 font-body">Disponibles en múltiples tallas y colores, con opción de personalización de marca.</p>
+    </div>
+    <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-12"></div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ ELEGIRNOS ============ -->
+<section id="nosotros" class="py-24 bg-navy-950 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.05]" style="background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size:26px 26px;"></div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="ref-code text-amber-500 font-700 text-xs tracking-widest uppercase">Ficha técnica</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-white mt-3">¿Por qué elegir Dotaciones OB?</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-medal text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Alta calidad</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Materiales seleccionados y confección durable, pensada para el uso diario en planta u oficina.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-pen-nib text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Personalización</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Bordado y estampado de logotipos para que tu equipo lleve tu marca con orgullo.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-truck text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Envíos nacionales</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Despachamos a todo el país, con seguimiento del pedido hasta la entrega.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-flag text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Fabricación nacional</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Producción propia que nos permite controlar tiempos, calidad y costos.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-headset text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Atención empresarial</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Un asesor dedicado para pedidos por volumen, contratos y reposiciones.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7">
+        <i class="fa-solid fa-clock text-amber-500 text-2xl"></i>
+        <h3 class="font-display font-700 text-white mt-4">Entregas rápidas</h3>
+        <p class="text-white/60 text-sm mt-2 font-body">Tiempos de producción y despacho ajustados a la urgencia de tu operación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERSONALIZACIÓN ============ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Marca tu equipo</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Personalización para tu empresa</h2>
+      <p class="text-ink/60 mt-4 font-body max-w-lg">Toda nuestra línea de dotación puede personalizarse con la identidad de tu marca, desde piezas individuales hasta pedidos por volumen.</p>
+
+      <div class="grid sm:grid-cols-2 gap-5 mt-8">
+        <div class="flex gap-3 items-start">
+          <i class="fa-solid fa-scissors text-amber-500 mt-1"></i>
+          <div>
+            <p class="font-display font-700 text-sm text-navy-950">Bordado de logotipos</p>
+            <p class="text-ink/55 text-xs mt-1 font-body">Acabado durable para uso prolongado.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <i class="fa-solid fa-stamp text-amber-500 mt-1"></i>
+          <div>
+            <p class="font-display font-700 text-sm text-navy-950">Estampado</p>
+            <p class="text-ink/55 text-xs mt-1 font-body">Ideal para diseños grandes o a color.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <i class="fa-solid fa-layer-group text-amber-500 mt-1"></i>
+          <div>
+            <p class="font-display font-700 text-sm text-navy-950">Sublimación</p>
+            <p class="text-ink/55 text-xs mt-1 font-body">Color de borde a borde en telas técnicas.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <i class="fa-solid fa-drafting-compass text-amber-500 mt-1"></i>
+          <div>
+            <p class="font-display font-700 text-sm text-navy-950">Diseño exclusivo</p>
+            <p class="text-ink/55 text-xs mt-1 font-body">Desarrollo de prendas a la medida de tu marca.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal relative h-96">
+      <div class="tag p-6 shadow-lg absolute w-64 left-0 top-4 rotate-[-4deg]">
+        <div class="tag-string"></div>
+        <p class="ref-code text-[11px] text-navy-700 font-700">TÉCNICA · BORDADO</p>
+        <div class="mt-3 h-24 rounded-lg bg-navy-800 flex items-center justify-center"><i class="fa-solid fa-scissors text-3xl text-amber-500"></i></div>
+      </div>
+      <div class="tag p-6 shadow-lg absolute w-64 right-0 top-24 rotate-[3deg]">
+        <div class="tag-string"></div>
+        <p class="ref-code text-[11px] text-navy-700 font-700">TÉCNICA · ESTAMPADO</p>
+        <div class="mt-3 h-24 rounded-lg bg-amber-500 flex items-center justify-center"><i class="fa-solid fa-stamp text-3xl text-navy-950"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="py-24 bg-paper stitch">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Muestrario</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Galería de dotaciones</h2>
+    </div>
+    <div id="galleryGrid" class="columns-2 md:columns-3 gap-5 mt-12 space-y-5"></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section id="testimonios" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Clientes</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Empresas que confían en nosotros</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7 mt-12">
+      <div class="reveal border border-[#E2E6EC] rounded-2xl p-7 card-hover">
+        <div class="star text-sm">★★★★★</div>
+        <p class="text-ink/70 text-sm mt-4 font-body">"Renovamos la dotación de toda la planta y el proceso fue rápido. La calidad del overol se nota desde el primer lavado."</p>
+        <p class="font-display font-700 text-sm text-navy-950 mt-5">Andrea Muñoz</p>
+        <p class="text-ink/45 text-xs font-body">Jefe de Compras, Grupo Industrial Andes</p>
+      </div>
+      <div class="reveal border border-[#E2E6EC] rounded-2xl p-7 card-hover">
+        <div class="star text-sm">★★★★★</div>
+        <p class="text-ink/70 text-sm mt-4 font-body">"El bordado quedó impecable y nos asesoraron bien con las tallas. Ya es nuestro proveedor fijo de uniformes administrativos."</p>
+        <p class="font-display font-700 text-sm text-navy-950 mt-5">Carlos Restrepo</p>
+        <p class="text-ink/45 text-xs font-body">Gerente Administrativo, Corporación Litoral</p>
+      </div>
+      <div class="reveal border border-[#E2E6EC] rounded-2xl p-7 card-hover">
+        <div class="star text-sm">★★★★★</div>
+        <p class="text-ink/70 text-sm mt-4 font-body">"Necesitábamos batas y uniformes hospitalarios con entrega urgente y cumplieron el plazo sin sacrificar calidad."</p>
+        <p class="font-display font-700 text-sm text-navy-950 mt-5">Diana Torres</p>
+        <p class="text-ink/45 text-xs font-body">Coordinadora Logística, Clínica San Rafael</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COTIZACIÓN ============ -->
+<section id="cotizacion" class="py-24 bg-navy-950 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.05]" style="background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size:26px 26px;"></div>
+  <div class="max-w-4xl mx-auto px-5 md:px-8 relative">
+    <div class="text-center reveal">
+      <p class="ref-code text-amber-500 font-700 text-xs tracking-widest uppercase">Orden de pedido</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-white mt-3">Solicita tu cotización</h2>
+      <p class="text-white/60 mt-4 font-body">Cuéntanos qué necesita tu empresa y te contactamos con una propuesta a la medida.</p>
+    </div>
+
+    <form id="quoteForm" class="reveal bg-white rounded-2xl p-7 md:p-10 mt-10 grid sm:grid-cols-2 gap-5">
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Nombre *</label>
+        <input required name="nombre" type="text" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="Tu nombre completo">
+      </div>
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Empresa *</label>
+        <input required name="empresa" type="text" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="Nombre de tu empresa">
+      </div>
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Teléfono *</label>
+        <input required name="telefono" type="tel" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="300 000 0000">
+      </div>
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Correo *</label>
+        <input required name="correo" type="email" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="tucorreo@empresa.com">
+      </div>
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Producto de interés</label>
+        <select name="producto" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body bg-white">
+          <option value="">Selecciona una categoría</option>
+        </select>
+      </div>
+      <div class="sm:col-span-1">
+        <label class="text-xs font-700 font-display text-navy-950">Cantidad estimada</label>
+        <input name="cantidad" type="number" min="1" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="Ej. 50">
+      </div>
+      <div class="sm:col-span-2">
+        <label class="text-xs font-700 font-display text-navy-950">Mensaje</label>
+        <textarea name="mensaje" rows="4" class="mt-1.5 w-full border border-[#E2E6EC] rounded-lg px-4 py-3 text-sm font-body" placeholder="Cuéntanos detalles del pedido: tallas, colores, plazos..."></textarea>
+      </div>
+      <div class="sm:col-span-2">
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-navy-950 font-display font-700 py-3.5 rounded-lg transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i> Enviar solicitud
+        </button>
+        <p id="formMsg" class="hidden text-center text-sm text-green-700 font-body mt-4"><i class="fa-solid fa-circle-check"></i> ¡Solicitud recibida! Un asesor te contactará muy pronto.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="py-24 bg-paper stitch">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12">
+    <div class="reveal">
+      <p class="ref-code text-amber-600 font-700 text-xs tracking-widest uppercase">Contacto</p>
+      <h2 class="font-display font-800 text-3xl md:text-4xl text-navy-950 mt-3">Hablemos de tu dotación</h2>
+
+      <div class="space-y-5 mt-8">
+        <a href="https://wa.me/573000000000" target="_blank" class="flex items-center gap-4 bg-white rounded-xl p-5 card-hover border border-[#E2E6EC]">
+          <div class="w-11 h-11 rounded-full bg-green-500/10 text-green-600 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-lg"></i></div>
+          <div><p class="font-display font-700 text-sm text-navy-950">WhatsApp</p><p class="text-ink/55 text-xs font-body">+57 300 000 0000</p></div>
+        </a>
+        <div class="flex items-center gap-4 bg-white rounded-xl p-5 border border-[#E2E6EC]">
+          <div class="w-11 h-11 rounded-full bg-navy-950/10 text-navy-950 flex items-center justify-center"><i class="fa-solid fa-phone text-lg"></i></div>
+          <div><p class="font-display font-700 text-sm text-navy-950">Teléfono</p><p class="text-ink/55 text-xs font-body">(601) 000 0000</p></div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-xl p-5 border border-[#E2E6EC]">
+          <div class="w-11 h-11 rounded-full bg-amber-500/15 text-amber-600 flex items-center justify-center"><i class="fa-solid fa-envelope text-lg"></i></div>
+          <div><p class="font-display font-700 text-sm text-navy-950">Correo</p><p class="text-ink/55 text-xs font-body">contacto@dotacionesob.com</p></div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-xl p-5 border border-[#E2E6EC]">
+          <div class="w-11 h-11 rounded-full bg-navy-950/10 text-navy-950 flex items-center justify-center"><i class="fa-solid fa-location-dot text-lg"></i></div>
+          <div><p class="font-display font-700 text-sm text-navy-950">Dirección</p><p class="text-ink/55 text-xs font-body">Bogotá D.C., Colombia</p></div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-xl p-5 border border-[#E2E6EC]">
+          <div class="w-11 h-11 rounded-full bg-navy-950/10 text-navy-950 flex items-center justify-center"><i class="fa-solid fa-clock text-lg"></i></div>
+          <div><p class="font-display font-700 text-sm text-navy-950">Horario de atención</p><p class="text-ink/55 text-xs font-body">Lunes a viernes: 8:00 a.m. – 6:00 p.m. · Sábados: 8:00 a.m. – 1:00 p.m.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal rounded-2xl overflow-hidden border border-[#E2E6EC] shadow-sm h-[420px] lg:h-auto">
+      <iframe title="Ubicación Dotaciones OB en el mapa" src="https://www.google.com/maps?q=Bogota,Colombia&output=embed" width="100%" height="100%" style="border:0; min-height:420px;" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy-950 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center font-display font-800 text-navy-950">OB</span>
+        <span class="font-display font-700 text-white">DOTACIONES OB</span>
+      </div>
+      <p class="text-white/50 text-sm mt-4 font-body">Uniformes y dotaciones empresariales fabricados en Colombia, con personalización de marca para cada sector.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/10 hover:bg-amber-500 hover:text-navy-950 text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/10 hover:bg-amber-500 hover:text-navy-950 text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/10 hover:bg-amber-500 hover:text-navy-950 text-white flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/573000000000" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-white/10 hover:bg-amber-500 hover:text-navy-950 text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-display font-700 text-white text-sm">Enlaces rápidos</p>
+      <div class="flex flex-col gap-2.5 mt-4 text-white/55 text-sm font-body">
+        <a href="#inicio" class="hover:text-amber-500">Inicio</a>
+        <a href="#categorias" class="hover:text-amber-500">Categorías</a>
+        <a href="#catalogo" class="hover:text-amber-500">Productos</a>
+        <a href="#nosotros" class="hover:text-amber-500">Nosotros</a>
+        <a href="#cotizacion" class="hover:text-amber-500">Cotizar</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-display font-700 text-white text-sm">Políticas</p>
+      <div class="flex flex-col gap-2.5 mt-4 text-white/55 text-sm font-body">
+        <a href="#" class="hover:text-amber-500">Política de privacidad</a>
+        <a href="#" class="hover:text-amber-500">Política de envíos</a>
+        <a href="#" class="hover:text-amber-500">Garantías y cambios</a>
+        <a href="#" class="hover:text-amber-500">Términos y condiciones</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-display font-700 text-white text-sm">Contacto</p>
+      <div class="flex flex-col gap-2.5 mt-4 text-white/55 text-sm font-body">
+        <span><i class="fa-solid fa-phone mr-2 text-amber-500"></i>(601) 000 0000</span>
+        <span><i class="fa-solid fa-envelope mr-2 text-amber-500"></i>contacto@dotacionesob.com</span>
+        <span><i class="fa-solid fa-location-dot mr-2 text-amber-500"></i>Bogotá D.C., Colombia</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stitch max-w-7xl mx-auto mt-10 pt-6 px-5 md:px-8 text-center text-white/40 text-xs font-body">
+    © <span id="year"></span> Dotaciones OB. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- Floating buttons -->
+<a href="https://wa.me/573000000000" target="_blank" aria-label="Escríbenos por WhatsApp"
+  class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-xl text-2xl transition">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button id="backToTop" aria-label="Volver arriba"
+  class="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-navy-950 hover:bg-navy-800 text-white flex items-center justify-center shadow-xl opacity-0 pointer-events-none transition">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script>
+/* ============ DATA ============ */
+const categorias = [
+  {n:'Chaquetas Rompeviento', g:'industrial', img:'rompevientos.jpg', d:'Ligeras y resistentes al viento para exteriores.'},
+  {n:'Delantales Industriales', g:'industrial', icon:'fa-user-shield', d:'Protección frontal para labores de taller y planta.'},
+  {n:'Pantalones de Jean', g:'industrial', icon:'fa-ruler-vertical', d:'Resistencia y comodidad para el trabajo diario.'},
+  {n:'Camisas Empresariales', g:'corporativo', icon:'fa-shirt', d:'Presentación formal para atención al cliente.'},
+  {n:'Camisetas Tipo Polo', g:'corporativo', icon:'fa-shirt', d:'Imagen corporativa cómoda para el día a día.'},
+  {n:'Overoles Industriales', g:'industrial', icon:'fa-user-gear', d:'Protección completa para entornos exigentes.'},
+  {n:'Chalecos', g:'industrial', icon:'fa-vest', d:'Alta visibilidad y practicidad operativa.'},
+  {n:'Chaquetas Impermeables', g:'industrial', icon:'fa-cloud-showers-heavy', d:'Protección total ante lluvia y humedad.'},
+  {n:'Batas de Laboratorio', g:'salud', icon:'fa-flask', d:'Confección técnica para entornos clínicos.'},
+  {n:'Sudaderas Empresariales', g:'corporativo', icon:'fa-shirt', d:'Abrigo con identidad de marca.'},
+  {n:'Gorras', g:'proteccion', icon:'fa-hat-cowboy', d:'Protección solar con espacio para bordado.'},
+  {n:'Cachuchas', g:'proteccion', icon:'fa-hat-cowboy-side', d:'Estilo casual para uso operativo diario.'},
+  {n:'Botas de Seguridad', g:'proteccion', icon:'fa-shoe-prints', d:'Protección de pie certificada para planta.'},
+  {n:'Guantes Industriales', g:'proteccion', icon:'fa-hand', d:'Agarre y protección para manipulación de carga.'},
+  {n:'Elementos de Protección Personal (EPP)', g:'proteccion', icon:'fa-shield-halved', d:'Kit completo de bioseguridad y protección.'},
+  {n:'Uniformes Hospitalarios', g:'salud', icon:'fa-house-medical', d:'Diseño funcional para personal de salud.'},
+  {n:'Uniformes de Cocina', g:'salud', icon:'fa-kitchen-set', d:'Comodidad y limpieza para áreas de alimentos.'},
+  {n:'Uniformes Industriales', g:'industrial', icon:'fa-helmet-safety', d:'Línea completa para plantas de producción.'},
+  {n:'Uniformes Administrativos', g:'corporativo', icon:'fa-briefcase', d:'Imagen profesional para oficina.'},
+  {n:'Uniformes para Construcción', g:'industrial', icon:'fa-hard-hat', d:'Resistencia para obra y trabajo pesado.'},
+];
+
+const productos = [
+  {n:'Overol Industrial Reforzado', icon:'fa-user-gear', bg:'bg-navy-800', d:'Confección de alta resistencia para planta y taller.'},
+  {n:'Chaleco Reflectivo', icon:'fa-vest', bg:'bg-amber-500 text-navy-950', d:'Alta visibilidad para operarios y personal en vía.'},
+  {n:'Camisa Corporativa Slim', icon:'fa-shirt', bg:'bg-navy-700', d:'Corte moderno para atención al público.'},
+  {n:'Bata de Laboratorio', icon:'fa-flask', bg:'bg-navy-800', d:'Tela técnica antifluidos para uso clínico.'},
+  {n:'Polo Empresarial', icon:'fa-shirt', bg:'bg-navy-700', d:'Ideal para bordado de logotipo institucional.'},
+  {n:'Uniforme de Cocina Completo', icon:'fa-kitchen-set', bg:'bg-navy-800', d:'Chaqueta, pantalón y gorro para área de alimentos.'},
+];
+
+const galeria = [
+  {n:'Línea Industrial', icon:'fa-industry', h:'h-56', bg:'bg-navy-800'},
+  {n:'Corporativo', icon:'fa-briefcase', h:'h-72', bg:'bg-navy-700'},
+  {n:'Protección EPP', icon:'fa-shield-halved', h:'h-64', bg:'bg-amber-500 text-navy-950'},
+  {n:'Salud', icon:'fa-house-medical', h:'h-60', bg:'bg-navy-800'},
+  {n:'Cocina', icon:'fa-kitchen-set', h:'h-72', bg:'bg-navy-700'},
+  {n:'Construcción', icon:'fa-hard-hat', h:'h-56', bg:'bg-amber-500 text-navy-950'},
+];
+
+/* ============ RENDER CATEGORÍAS ============ */
+const catGrid = document.getElementById('catGrid');
+function renderCategorias(list){
+  catGrid.innerHTML = '';
+  document.getElementById('catEmpty').classList.toggle('hidden', list.length !== 0);
+  list.forEach((c,i)=>{
+    const codeNum = String(i+1).padStart(2,'0');
+    catGrid.insertAdjacentHTML('beforeend', `
+      <div class="tag p-5 card-hover reveal in">
+        <div class="tag-string"></div>
+        <p class="ref-code text-[10px] text-navy-700/70 font-700">REF-${codeNum}</p>
+        <div class="h-24 rounded-lg bg-navy-950 flex items-center justify-center mt-2 fabric">
+          <img src="${c.img || c.imagen}" alt="${c.n}" class="w-full h-full object-cover rounded-lg">
+        </div>
+        <h3 class="font-display font-700 text-sm text-navy-950 mt-4">${c.n}</h3>
+        <p class="text-ink/55 text-xs mt-1.5 font-body leading-relaxed">${c.d}</p>
+        <button class="text-xs font-display font-700 text-navy-950 mt-4 inline-flex items-center gap-1.5 hover:text-amber-600 verbtn">
+          Ver más <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    `);
+  });
+}
+renderCategorias(categorias);
+
+// search + filter
+let activeGroup = 'todos';
+function applyFilters(){
+  const q = document.getElementById('catSearch').value.trim().toLowerCase();
+  const filtered = categorias.filter(c=>{
+    const matchesGroup = activeGroup === 'todos' || c.g === activeGroup;
+    const matchesSearch = c.n.toLowerCase().includes(q);
+    return matchesGroup && matchesSearch;
+  });
+  renderCategorias(filtered);
+}
+document.getElementById('catSearch').addEventListener('input', applyFilters);
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>{
+      b.classList.remove('active-filter','bg-navy-950','text-white','border-navy-950');
+      b.classList.add('border-[#E2E6EC]');
+    });
+    btn.classList.add('active-filter','bg-navy-950','text-white','border-navy-950');
+    activeGroup = btn.dataset.group;
+    applyFilters();
+  });
+});
+
+// clicking "ver más" scrolls to catalog
+catGrid.addEventListener('click', (e)=>{
+  if(e.target.closest('.verbtn')){
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+  }
+});
+
+/* ============ RENDER PRODUCTOS ============ */
+const productGrid = document.getElementById('productGrid');
+productos.forEach(p=>{
+  productGrid.insertAdjacentHTML('beforeend', `
+    <div class="bg-white rounded-2xl border border-[#E2E6EC] overflow-hidden card-hover reveal in">
+      <div class="h-44 ${p.bg} fabric flex items-center justify-center">
+        <i class="fa-solid ${p.icon} text-5xl ${p.bg.includes('text-navy-950') ? '' : 'text-amber-500'}"></i>
+      </div>
+      <div class="p-6">
+        <h3 class="font-display font-700 text-navy-950">${p.n}</h3>
+        <p class="text-ink/55 text-sm mt-2 font-body">${p.d}</p>
+        <div class="flex gap-4 mt-4 text-xs text-ink/50 font-body">
+          <span><i class="fa-solid fa-palette mr-1 text-amber-600"></i>Varios colores</span>
+          <span><i class="fa-solid fa-ruler mr-1 text-amber-600"></i>Varias tallas</span>
+        </div>
+        <a href="#cotizacion" class="mt-5 w-full inline-flex justify-center items-center gap-2 bg-navy-950 hover:bg-amber-500 hover:text-navy-950 text-white font-display font-700 text-sm py-2.5 rounded-lg transition">
+          Solicitar Cotización
+        </a>
+      </div>
+    </div>
+  `);
+});
+
+/* ============ RENDER GALERÍA ============ */
+const galleryGrid = document.getElementById('galleryGrid');
+galeria.forEach(g=>{
+  galleryGrid.insertAdjacentHTML('beforeend', `
+    <div class="break-inside-avoid ${g.h} ${g.bg} fabric rounded-2xl flex flex-col items-center justify-center gap-3 card-hover reveal in">
+      <i class="fa-solid ${g.icon} text-4xl ${g.bg.includes('text-navy-950') ? '' : 'text-amber-500'}"></i>
+      <p class="font-display font-700 text-sm ${g.bg.includes('text-navy-950') ? '' : 'text-white'}">${g.n}</p>
+    </div>
+  `);
+});
+
+/* ============ SELECT en formulario ============ */
+const select = document.querySelector('select[name="producto"]');
+categorias.forEach(c=>{
+  const opt = document.createElement('option');
+  opt.value = c.n; opt.textContent = c.n;
+  select.appendChild(opt);
+});
+
+/* ============ FORM SUBMIT ============ */
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('formMsg').classList.remove('hidden');
+  this.reset();
+  setTimeout(()=>document.getElementById('formMsg').classList.add('hidden'), 6000);
+});
+
+/* ============ MOBILE MENU ============ */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', ()=>{
+  mobileMenu.classList.toggle('hidden');
+  menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
+});
+document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click', ()=>{
+  mobileMenu.classList.add('hidden');
+  menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+}));
+
+/* ============ ACTIVE NAV ON SCROLL ============ */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 140) current = s.id;
+  });
+  navLinks.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+  });
+
+  // back to top button
+  const btt = document.getElementById('backToTop');
+  if(window.scrollY > 500){ btt.classList.remove('opacity-0','pointer-events-none'); }
+  else{ btt.classList.add('opacity-0','pointer-events-none'); }
+});
+document.getElementById('backToTop').addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ============ SCROLL REVEAL ============ */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+  });
+}, {threshold:0.12});
+revealEls.forEach(el=>io.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
